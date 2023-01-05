@@ -1,8 +1,10 @@
+import os
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
 
-
+cors = CORS(app, resource={r'/*':{'origins':'*'}})
 @app.route('/calculadora')
 def homepage():
     boas_vindas = ('Bem vindo!! Exemplo de Operação:http://localhost:5000/calculadora/sum/3/2 =5 ')
@@ -33,4 +35,9 @@ def multiplicar(n1, n2):
     return jsonify(mult)
 
 
-app.run(port=5000, host='localhost', debug=True)
+def main():
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
+if __name__ == '__main__':
+    main()
