@@ -7,7 +7,7 @@ app = Flask(__name__)
 cors = CORS(app, resource={r'/*':{'origins':'*'}})
 @app.route('/calculadora')
 def homepage():
-    boas_vindas = ('Bem vindo!! Exemplo de Operacao:http://localhost:5000/calculadora/sum/3/2 =5 ')
+    boas_vindas = ('Bem vindo!! Exemplo de Operacao:https://api-calculadorapython.herokuapp.com/calculadora/sum/3/2')
     return jsonify(boas_vindas)
 
 
