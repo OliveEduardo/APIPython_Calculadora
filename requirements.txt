@@ -15,3 +15,7 @@ urllib3
 fastapi~=0.88.0
 gunicorn
 uvicorn
+aiofiles==0.6.0
+python-multipart==0.0.5
+jinja2==2.11.2
+
