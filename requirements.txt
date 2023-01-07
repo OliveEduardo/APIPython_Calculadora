@@ -13,3 +13,5 @@ requests
 requests-oauthlib
 urllib3
 fastapi~=0.88.0
+gunicorn
+uvicorn
