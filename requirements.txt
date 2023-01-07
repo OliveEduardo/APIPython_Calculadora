@@ -4,7 +4,7 @@ cryptography
 distlib
 et-xmlfile
 filelock
-Flask
+Flask~=1.0.1
 Flask-Cors
 importlib-metadata
 isodate
@@ -14,3 +14,5 @@ oauthlib
 requests
 requests-oauthlib
 urllib3
+Werkzeug~=0.16.1
+fastapi~=0.88.0

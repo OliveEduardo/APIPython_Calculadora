@@ -1,42 +1,37 @@
+from fastapi import FastAPI, Path
 import os
-from flask import Flask, jsonify
-from flask_cors import CORS
+app = FastAPI(title='Calculadora', description='Simples calculadora em Python e APIrest',version='1.0.0')
 
-app = Flask(__name__)
-
-cors = CORS(app, resource={r'/*':{'origins':'*'}})
-@app.route('/calculadora')
+@app.get('/calculadora')
 def homepage():
-    boas_vindas = 'Bem vindo!! Exemplo de Operacao: api-calculadorapython.herokuapp.com/calculadora/sum/3/2 '
-    return jsonify(boas_vindas)
+    return {"Bem": "Vindo"}
 
 
-@app.route('/calculadora/sum/<int:n1>/<int:n2>', methods=['GET'])
-def soma(n1, n2):
+@app.get('/calculadora/soma/{n1}/{n2}')
+def Operacao_soma(n1: int = Path(description='Variavel 1 do tipo inteiro'),  n2: int = Path(description='Variavel 2 do tipo inteiro')):
     soma = n1 + n2
-    return jsonify(soma)
+    return soma
 
 
-@app.route('/calculadora/sub/<int:n1>/<int:n2>', methods=['GET'])
-def subtracao(n1, n2):
+@app.get('/calculadora/sub/{n1}/{n2}')
+def Operacao_Subtraao(n1: int = Path(description='Variavel 1 do tipo inteiro'),  n2: int = Path(description='Variavel 2 do tipo inteiro')):
     sub = n1 - n2
-    return jsonify(sub)
+    return sub
 
 
-@app.route('/calculadora/div/<int:n1>/<int:n2>', methods=['GET'])
-def divisao(n1, n2):
-    divisao = n1 / n2
-    return jsonify(divisao)
-
-
-@app.route('/calculadora/mult/<int:n1>/<int:n2>', methods=['GET'])
-def multiplicar(n1, n2):
+@app.get('/calculadora/mult/{n1}/{n2}')
+def Operacao_Multiplicacao(n1: int = Path(description='Variavel 1 do tipo inteiro'),  n2: int = Path(description='Variavel 2 do tipo inteiro')):
     mult = n1 * n2
-    return jsonify(mult)
+    return mult
 
+
+@app.get('/calculadora/div/{n1}/{n2}')
+def Operacao_Divisao(n1: int = Path(description='Variavel 1 do tipo inteiro'),  n2: int = Path(description='Variavel 2 do tipo inteiro')):
+    div = n1 / n2
+    return div
 
 def main():
-    port = int(os.environ.get('PORT', 5000))
+    port= int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
 
 if __name__ == '__main__':
