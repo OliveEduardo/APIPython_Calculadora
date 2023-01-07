@@ -29,10 +29,3 @@ def Operacao_Multiplicacao(n1: int = Path(description='Variavel 1 do tipo inteir
 def Operacao_Divisao(n1: int = Path(description='Variavel 1 do tipo inteiro'),  n2: int = Path(description='Variavel 2 do tipo inteiro')):
     div = n1 / n2
     return div
-
-def main():
-    port= int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-
-if __name__ == '__main__':
-    main()
